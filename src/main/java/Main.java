@@ -17,5 +17,14 @@ public class Main {
     for (Order order : orders) {
       System.out.println(order);
     }
+//
+//    for (int i = 0; i < 10; i++) {
+//      orderService.save(Order.createOrder(Instant.now()));
+//    }
+
+//    orderService.delete("112233");
+
+    // Order{orderId='112233', customerId='332211', createdAt=2021-04-04T22:19:55Z, details='this is an test order with details'}
+
   }
 }

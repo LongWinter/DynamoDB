@@ -17,7 +17,11 @@ public class OrderService {
     return orderRepository.findByCustomerIdAndCreatedAtRange(customerId, createdAtRange);
   }
 
-  public void save(String orderId, String customerId, String details) {
+  public void save(Order order) {
+    orderRepository.save(order);
+  }
 
+  public void delete(String orderId) {
+    orderRepository.delete(orderId);
   }
 }

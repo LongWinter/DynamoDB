@@ -73,4 +73,11 @@ public class Order {
             ", details='" + details + '\'' +
             '}';
   }
+
+  public static Order fromDomain(domain.Order order) {
+    return new Order(order.getOrderId(),
+                     order.getCustomerId(),
+                     order.getCreatedAt().toEpochMilli(),
+                     order.getDetails());
+  }
 }

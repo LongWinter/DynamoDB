@@ -37,9 +37,15 @@ public class DynamoOrderRepository implements OrderRepository {
   }
 
   @Override
-  public void save(String orderId, String customerId, Instant createdAt, String details) {
-    Order order = new Order(orderId, customerId, createdAt.toEpochMilli(), details);
+  public void save(domain.Order domain) {
+    Order order = Order.fromDomain(domain);
     dynamoDBMapper.save(order);
+  }
+
+  public void delete(String orderId) {
+    Order order = new Order();
+    order.setOrderId(orderId);
+    dynamoDBMapper.delete(order);
   }
 
   private DynamoDBQueryExpression<Order> getQueryExpressionForFindingOrders(String customerId, Range<Instant> createdAtRange) {
